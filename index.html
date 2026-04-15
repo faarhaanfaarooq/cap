@@ -1,481 +1,1228 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoreAxis Advisory Partners</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0f1f3d', // Deep navy blue
-                        accent: '#3a8a8f',  // Teal
-                        light: '#f8f9fa',
-                        dark: '#1a1a1a'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    transitionProperty: {
-                        'height': 'height',
-                        'spacing': 'margin, padding',
-                    }
-                }
-            }
-        }
-    </script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoreAxis Advisory Partners | Insight at the Core</title>
+    <meta
+      name="description"
+      content="CoreAxis Advisory Partners (CAP) is a multidisciplinary professional advisory firm providing financial, tax, and GRC consultancy in Dhaka, Bangladesh."
+    />
 
-    <!-- Custom CSS for Animations & Refinements -->
+    <!-- Google Fonts: Merriweather for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <style>
-        /* Base Styles */
-        body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+      /* ==========================================================================
+           1. CSS VARIABLES & RESET
+           ========================================================================== */
+      :root {
+        --primary-navy: #0f2744;
+        --accent-teal: #3c7e85;
+        --bg-light: #f5f7f9;
+        --text-dark: #1a1a1a;
+        --text-muted: #555555;
+        --white: #ffffff;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-dark);
+        background-color: var(--bg-light);
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Merriweather", serif;
+        color: var(--primary-navy);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section-padding {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: var(--accent-teal);
+        margin: 15px auto 0;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto 50px auto;
+        font-size: 1.1rem;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .btn-primary {
+        background-color: var(--accent-teal);
+        color: var(--white);
+      }
+
+      .btn-primary:hover {
+        background-color: #2c6066;
+        color: var(--white);
+      }
+
+      .btn-outline {
+        border-color: var(--white);
+        color: var(--white);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--white);
+        color: var(--primary-navy);
+      }
+
+      /* ==========================================================================
+           2. HEADER & NAVIGATION
+           ========================================================================== */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: transparent;
+        padding: 20px 0;
+        z-index: 1000;
+        transition: var(--transition);
+      }
+
+      header.scrolled {
+        background-color: var(--white);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+      }
+
+      header.scrolled .nav-link {
+        color: var(--primary-navy);
+      }
+
+      header.scrolled .logo-text {
+        color: var(--primary-navy);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Stylized Logo to match provided branding */
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo-icon {
+        font-family: "Merriweather", serif;
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1;
+        position: relative;
+        color: var(--accent-teal);
+      }
+
+      .logo-text {
+        color: var(--white);
+        font-family: "Merriweather", serif;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .logo-main {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 1.1;
+      }
+
+      .logo-sub {
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--accent-teal);
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-link {
+        color: var(--white);
+        font-weight: 500;
+        font-size: 1rem;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background-color: var(--accent-teal);
+        transition: var(--transition);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .mobile-toggle {
+        display: none;
+        color: var(--white);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      header.scrolled .mobile-toggle {
+        color: var(--primary-navy);
+      }
+
+      /* ==========================================================================
+           3. HERO SECTION
+           ========================================================================== */
+      .hero {
+        height: 100vh;
+        min-height: 600px;
+        background:
+          linear-gradient(rgba(15, 39, 68, 0.85), rgba(15, 39, 68, 0.95)),
+          url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80")
+            center/cover no-repeat fixed;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: var(--white);
+        padding-top: 60px; /* offset for fixed header */
+      }
+
+      .hero h1 {
+        color: var(--white);
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+        color: #d1d5db;
+        animation: fadeInUp 1s ease 0.2s;
+        animation-fill-mode: backwards;
+      }
+
+      .hero-cta {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        animation: fadeInUp 1s ease 0.4s;
+        animation-fill-mode: backwards;
+      }
+
+      /* Trust Banner */
+      .trust-banner {
+        background-color: var(--white);
+        padding: 30px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        margin-top: -50px;
+        position: relative;
+        z-index: 10;
+        border-radius: 8px;
+      }
+
+      .trust-grid {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .trust-item h4 {
+        font-size: 1.2rem;
+        margin-top: 10px;
+      }
+
+      .trust-item p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .trust-item i {
+        font-size: 2rem;
+        color: var(--accent-teal);
+      }
+
+      /* ==========================================================================
+           4. ABOUT US SECTION
+           ========================================================================== */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .about-content h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .about-content p {
+        margin-bottom: 15px;
+        color: var(--text-muted);
+      }
+
+      .core-values {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .value-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .value-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(60, 126, 133, 0.1);
+        color: var(--accent-teal);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      /* ==========================================================================
+           5. SERVICES SECTION
+           ========================================================================== */
+      .services {
+        background-color: var(--white);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        background-color: var(--bg-light);
+        padding: 40px 30px;
+        border-radius: 8px;
+        transition: var(--transition);
+        border-bottom: 4px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        border-bottom-color: var(--accent-teal);
+        background-color: var(--white);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        color: var(--primary-navy);
+        margin-bottom: 20px;
+        transition: var(--transition);
+      }
+
+      .service-card:hover .service-icon {
+        color: var(--accent-teal);
+      }
+
+      .service-card h4 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
+
+      .service-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      /* ==========================================================================
+           6. TESTIMONIALS & STATS
+           ========================================================================== */
+      .testimonials {
+        background:
+          linear-gradient(rgba(15, 39, 68, 0.9), rgba(15, 39, 68, 0.9)),
+          url("https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1920&q=80")
+            center/cover fixed;
+        color: var(--white);
+        text-align: center;
+      }
+
+      .testimonials .section-title,
+      .testimonials .section-subtitle {
+        color: var(--white);
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .testimonial-card {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: #d1d5db;
+      }
+
+      .client-info h5 {
+        color: var(--accent-teal);
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+      }
+
+      /* ==========================================================================
+           7. CONTACT SECTION
+           ========================================================================== */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 50px;
+      }
+
+      .contact-info {
+        background-color: var(--primary-navy);
+        color: var(--white);
+        padding: 40px;
+        border-radius: 8px;
+      }
+
+      .contact-info h3 {
+        color: var(--white);
+        margin-bottom: 30px;
+      }
+
+      .info-item {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .info-icon {
+        color: var(--accent-teal);
+        font-size: 1.2rem;
+        margin-top: 5px;
+      }
+
+      .contact-form {
+        background-color: var(--white);
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: 4px;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent-teal);
+        box-shadow: 0 0 0 3px rgba(60, 126, 133, 0.1);
+      }
+
+      textarea.form-control {
+        height: 150px;
+        resize: vertical;
+      }
+
+      /* Form validation messages */
+      .form-message {
+        display: none;
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+
+      .form-message.success {
+        display: block;
+        background-color: #def7ec;
+        color: #03543f;
+        border: 1px solid #31c48d;
+      }
+
+      .form-message.error {
+        display: block;
+        background-color: #fde8e8;
+        color: #9b1c1c;
+        border: 1px solid #f98080;
+      }
+
+      /* ==========================================================================
+           8. FOOTER
+           ========================================================================== */
+      footer {
+        background-color: #081627;
+        color: #a0aec0;
+        padding: 60px 0 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 50px;
+        margin-bottom: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 40px;
+      }
+
+      .footer-brand .logo-text {
+        color: var(--white);
+        margin-bottom: 20px;
+      }
+
+      .footer-brand p {
+        margin-bottom: 20px;
+        max-width: 400px;
+      }
+
+      .footer-title {
+        color: var(--white);
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-teal);
+      }
+
+      .copyright {
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* ==========================================================================
+           9. RESPONSIVE DESIGN
+           ========================================================================== */
+      @media (max-width: 992px) {
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: var(--white);
+          flex-direction: column;
+          gap: 0;
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+          display: none;
         }
 
-        /* Scroll Reveal Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Staggered Delays */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-
-        /* Subtle Hover Effects */
-        .service-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(15, 31, 61, 0.1);
+        .nav-menu.active {
+          display: flex;
         }
 
-        /* Input Focus Ring */
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #3a8a8f;
-            box-shadow: 0 0 0 1px #3a8a8f;
+        .nav-link {
+          color: var(--primary-navy) !important;
+          padding: 15px 20px;
+          display: block;
+          border-bottom: 1px solid #f1f1f1;
         }
-        
-        /* Navbar Scrolled State */
-        .nav-scrolled {
-            box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05);
-            background-color: rgba(255, 255, 255, 0.98);
+
+        .mobile-toggle {
+          display: block;
         }
+
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        .hero p {
+          font-size: 1rem;
+        }
+        .hero-cta {
+          flex-direction: column;
+        }
+
+        .trust-banner {
+          margin-top: 0;
+          border-radius: 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Keyframes */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     </style>
-</head>
-<body class="bg-white text-gray-700 font-sans selection:bg-accent selection:text-white">
+  </head>
+  <body>
+    <!-- ==========================================================================
+         HEADER & NAVIGATION
+         ========================================================================== -->
+    <header id="header">
+      <div class="container nav-container">
+        <a href="#" class="logo">
+          <!-- <div class="logo-icon">CA</div> -->
+          <img src="final.png" width="15%" alt="CoreAxis Logo" />
+          <div class="logo-text">
+            <!-- <span class="logo-main">CoreAxis</span> -->
+            <!-- <span class="logo-sub">Advisory Partners</span> -->
+          </div>
+        </a>
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-100 py-4">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
-            <!-- Brand -->
-            <a href="#" class="flex items-center gap-3 group">
-                <!-- Simplified SVG representation of the logo -->
-                <svg width="40" height="40" viewBox="0 0 100 100" class="transform group-hover:scale-105 transition-transform duration-300">
-                    <path d="M 50,20 A 30,30 0 1,0 50,80 C 60,80 68,75 73,68 L 55,50 A 12,12 0 1,1 50,38 L 62,25 C 59,22 55,20 50,20 Z" fill="#0f1f3d"/>
-                    <polygon points="40,80 70,20 95,80 75,80 62,50 48,65" fill="#3a8a8f"/>
-                </svg>
-                <div class="flex flex-col">
-                    <span class="font-serif font-bold text-xl leading-none text-primary">CoreAxis</span>
-                    <span class="font-sans text-[0.55rem] tracking-[0.15em] font-semibold text-primary uppercase mt-0.5">Advisory Partners</span>
-                </div>
-            </a>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-sm font-medium text-gray-600 hover:text-accent transition-colors">About</a>
-                <a href="#services" class="text-sm font-medium text-gray-600 hover:text-accent transition-colors">Services</a>
-                <a href="#why-us" class="text-sm font-medium text-gray-600 hover:text-accent transition-colors">Why Us</a>
-                <a href="#contact" class="px-5 py-2.5 bg-primary text-white text-sm font-medium rounded hover:bg-opacity-90 transition-all shadow-sm">Get Consultation</a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-primary focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white flex flex-col justify-center min-h-screen">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full text-center flex flex-col items-center">
-            
-            <!-- Logo Recreation for Hero -->
-            <div class="reveal flex flex-col items-center mb-12">
-                <svg width="120" height="100" viewBox="0 0 100 80" class="mb-4">
-                    <path d="M 50,15 A 25,25 0 1,0 50,65 C 56,65 62,62 66,57 L 55,46 A 12,12 0 1,1 50,30 L 61,19 C 58,16.5 54,15 50,15 Z" fill="#0f1f3d"/>
-                    <polygon points="45,65 65,15 85,65 72,65 63,42 53,53" fill="#3a8a8f"/>
-                </svg>
-                <h1 class="font-serif text-5xl md:text-7xl font-bold text-primary tracking-tight">CoreAxis</h1>
-                <p class="font-sans text-sm md:text-base tracking-[0.2em] font-semibold text-primary uppercase mt-2">Advisory Partners</p>
-                <div class="w-full max-w-2xl h-[1px] bg-primary/30 my-4"></div>
-                <p class="font-serif text-lg md:text-xl text-accent italic">Insight at the Core. Direction on the Axis.</p>
-            </div>
-
-            <!-- Hero Content -->
-            <div class="reveal delay-100 max-w-3xl">
-                <p class="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed">
-                    Strategic financial advisory providing expertise, trust, and data-backed direction to navigate complex financial landscapes and optimize corporate governance.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#contact" class="px-8 py-4 bg-primary text-white font-medium rounded shadow-lg shadow-primary/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300">
-                        Get Consultation
-                    </a>
-                    <a href="#services" class="px-8 py-4 bg-white text-primary border border-gray-200 font-medium rounded hover:bg-gray-50 hover:border-gray-300 transition-all duration-300">
-                        Explore Services
-                    </a>
-                </div>
-            </div>
+        <div class="mobile-toggle" id="mobileToggle">
+          <i class="fas fa-bars"></i>
         </div>
 
-        <!-- Abstract Background Elements -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none opacity-40">
-            <div class="absolute top-[-10%] right-[-5%] w-[40%] h-[60%] rounded-full bg-light blur-3xl"></div>
-            <div class="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-accent/5 blur-3xl"></div>
-        </div>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li>
+            <a
+              href="#contact"
+              class="nav-link btn btn-primary"
+              style="
+                padding: 10px 20px;
+                border-radius: 4px;
+                margin-left: 10px;
+                color: #fff;
+              "
+              >Book Consultation</a
+            >
+          </li>
+        </ul>
+      </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-light">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <span class="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">About Our Firm</span>
-                    <h2 class="font-serif text-3xl md:text-4xl text-primary font-bold mb-6 leading-tight">Expertise that drives strategic direction.</h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        CoreAxis Advisory Partners is a premier consulting firm dedicated to delivering high-tier financial, governance, and business advisory services. We believe that true growth stems from actionable insights placed firmly at the core of your business strategy.
-                    </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        With extensive experience across valuation, public financial management, and corporate governance, our partners work alongside you to construct robust frameworks that ensure long-term sustainability and transparent, ethical growth.
-                    </p>
-                    <div class="flex items-center gap-4 border-l-2 border-accent pl-4">
-                        <p class="font-serif text-primary italic text-lg">"We align insight with direction to empower your financial future."</p>
-                    </div>
-                </div>
-                
-                <!-- Abstract visual representation instead of a stock photo -->
-                <div class="reveal delay-200 relative h-[400px] w-full rounded-2xl bg-white shadow-xl overflow-hidden flex items-center justify-center border border-gray-100">
-                    <div class="absolute w-64 h-64 border border-primary/10 rounded-full rotate-12"></div>
-                    <div class="absolute w-48 h-48 border border-accent/20 rounded-full -rotate-12"></div>
-                    <div class="w-32 h-32 bg-primary/5 backdrop-blur-md rounded-2xl rotate-45 flex items-center justify-center border border-primary/10 shadow-inner">
-                        <div class="w-16 h-16 bg-accent/10 rounded-lg -rotate-45 flex items-center justify-center">
-                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section id="home" class="hero">
+      <div class="container">
+        <h1>Insight at the Core.<br />Direction on the Axis.</h1>
+        <p>
+          Strategic multidisciplinary professional advisory firm for government
+          bodies, state-owned enterprises, private sector organizations, and
+          development partners.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary"
+            >Book a Free Consultation</a
+          >
+          <a href="#services" class="btn btn-outline">Explore Our Services</a>
         </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <span class="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">Practice Areas</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-primary font-bold mb-4">Comprehensive Advisory Services</h2>
-                <div class="w-16 h-0.5 bg-accent mx-auto"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="reveal delay-100 service-card bg-white p-8 rounded-xl border border-gray-100 relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-light rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                        <svg class="w-6 h-6 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Valuation</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Accurate, data-driven business and asset valuations to support transactions, reporting, and strategic planning.</p>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="reveal delay-200 service-card bg-white p-8 rounded-xl border border-gray-100 relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-light rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                        <svg class="w-6 h-6 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Public Financial Management</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Enhancing institutional capacity, budgeting frameworks, and fiscal transparency for public sector entities.</p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="reveal delay-300 service-card bg-white p-8 rounded-xl border border-gray-100 relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-light rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                        <svg class="w-6 h-6 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Governance Advisory</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Designing robust corporate governance frameworks that ensure compliance, ethical operation, and risk mitigation.</p>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="reveal delay-100 service-card bg-white p-8 rounded-xl border border-gray-100 relative overflow-hidden group lg:col-start-2">
-                    <div class="w-12 h-12 bg-light rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                        <svg class="w-6 h-6 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Outsourcing Services</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Streamlining operations by handling critical but non-core financial and administrative processes efficiently.</p>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="reveal delay-200 service-card bg-white p-8 rounded-xl border border-gray-100 relative overflow-hidden group">
-                    <div class="w-12 h-12 bg-light rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                        <svg class="w-6 h-6 text-accent group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Business Advisory</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Strategic guidance on restructuring, market entry, and operational efficiency to accelerate business growth.</p>
-                </div>
-            </div>
+    <!-- ==========================================================================
+         TRUST BANNER
+         ========================================================================== -->
+    <div class="container">
+      <div class="trust-banner">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <i class="fas fa-building-columns"></i>
+            <h4>Public & Private Sector</h4>
+            <p>Serving diverse institutional clients</p>
+          </div>
+          <div class="trust-item">
+            <i class="fas fa-chart-line"></i>
+            <h4>Data-Driven Advisory</h4>
+            <p>Ethical, independent analysis</p>
+          </div>
+          <div class="trust-item">
+            <i class="fas fa-handshake"></i>
+            <h4>Founded in 2025</h4>
+            <p>Led by Chartered Professionals</p>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         ABOUT SECTION
+         ========================================================================== -->
+    <section id="about" class="section-padding">
+      <div class="container about-grid">
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80"
+            alt="Corporate professionals in a meeting"
+          />
+        </div>
+        <div class="about-content">
+          <h3
+            class="section-title"
+            style="text-align: left; margin-bottom: 20px"
+          >
+            About CoreAxis
+          </h3>
+          <p>
+            Established on October 25, 2025,
+            <strong>CoreAxis Advisory Partners (CAP)</strong> is a
+            multidisciplinary professional advisory and consultancy firm based
+            in Dhaka, Bangladesh.
+          </p>
+          <p>
+            Guided by our founding partners,
+            <strong>Ms. Shayema Akter</strong> (Chartered Accountant) and
+            <strong>Mr. Mohammed Azizul Haq</strong>, we provide independent and
+            ethical advisory services. Our goal is to empower organizations with
+            actionable insights, robust financial frameworks, and unparalleled
+            compliance strategies locally and internationally.
+          </p>
+
+          <div class="core-values">
+            <div class="value-item">
+              <div class="value-icon"><i class="fas fa-balance-scale"></i></div>
+              <div><strong>Integrity</strong></div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="fas fa-medal"></i></div>
+              <div><strong>Professionalism</strong></div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="fas fa-eye"></i></div>
+              <div><strong>Transparency</strong></div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="fas fa-users"></i></div>
+              <div><strong>Client-Centric</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section id="why-us" class="py-24 bg-primary text-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1 reveal">
-                    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-10">Why partner with CoreAxis?</h2>
-                    
-                    <div class="space-y-8">
-                        <div class="flex items-start gap-4">
-                            <div class="mt-1 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                                <div class="w-2 h-2 rounded-full bg-accent"></div>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-1">Expertise-driven insights</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Our partners bring decades of specialized experience, ensuring guidance rooted in deep industry knowledge.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-4">
-                            <div class="mt-1 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                                <div class="w-2 h-2 rounded-full bg-accent"></div>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-1">Data-backed decisions</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">We replace guesswork with rigorous analysis, providing objective clarity for complex financial situations.</p>
-                            </div>
-                        </div>
+    <!-- ==========================================================================
+         SERVICES SECTION
+         ========================================================================== -->
+    <section id="services" class="services section-padding">
+      <div class="container">
+        <h2 class="section-title">Our Expertise</h2>
+        <p class="section-subtitle">
+          Delivering comprehensive financial and strategic frameworks tailored
+          to government bodies, development partners, and private enterprises.
+        </p>
 
-                        <div class="flex items-start gap-4">
-                            <div class="mt-1 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                                <div class="w-2 h-2 rounded-full bg-accent"></div>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-1">Client-focused strategy</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">Solutions are meticulously tailored to your specific organizational structure, goals, and market challenges.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="mt-1 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                                <div class="w-2 h-2 rounded-full bg-accent"></div>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-1">Transparent and ethical</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed">We operate with the highest degree of integrity, ensuring clear communication and trustworthy partnerships.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="order-1 lg:order-2 reveal delay-200">
-                    <div class="relative w-full aspect-square md:aspect-video lg:aspect-square rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent flex flex-col items-center justify-center p-12 text-center overflow-hidden">
-                        <!-- Background decoration -->
-                        <svg class="absolute top-0 right-0 text-white/5 w-64 h-64 -mt-10 -mr-10 transform rotate-12" viewBox="0 0 100 100">
-                            <path d="M 50,15 A 25,25 0 1,0 50,65 C 56,65 62,62 66,57 L 55,46 A 12,12 0 1,1 50,30 L 61,19 C 58,16.5 54,15 50,15 Z" fill="currentColor"/>
-                            <polygon points="45,65 65,15 85,65 72,65 63,42 53,53" fill="currentColor"/>
-                        </svg>
-                        
-                        <div class="font-serif text-5xl text-accent mb-4">CA</div>
-                        <p class="font-serif text-2xl italic mb-2">Direction on the Axis.</p>
-                        <p class="text-sm text-gray-400">Navigating complexity with precision.</p>
-                    </div>
-                </div>
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-file-invoice-dollar"></i>
             </div>
+            <h4>Public Financial Management</h4>
+            <p>
+              Comprehensive PFM advisory including budgeting, accounting,
+              financial reporting, compliance, and outsourced accounting
+              services.
+            </p>
+          </div>
+          <!-- Service 2 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-calculator"></i></div>
+            <h4>Financial & Tax Advisory</h4>
+            <p>
+              Expert accounting support, corporate taxation, VAT consultancy,
+              and non-statutory company affairs management.
+            </p>
+          </div>
+          <!-- Service 3 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+            <h4>Governance, Risk & Compliance</h4>
+            <p>
+              GRC advisory tailored to fortify internal controls, mitigate
+              fiduciary risks, and provide internal audit support services.
+            </p>
+          </div>
+          <!-- Service 4 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-magnifying-glass-chart"></i>
+            </div>
+            <h4>Valuation & Asset Management</h4>
+            <p>
+              Precise valuation, thorough asset verification, and strategic
+              asset management advisory for robust portfolio optimization.
+            </p>
+          </div>
+          <!-- Service 5 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <h4>Business Process Consulting</h4>
+            <p>
+              Feasibility studies, due diligence, diagnostic assessments, and
+              strategic business process re-engineering.
+            </p>
+          </div>
+          <!-- Service 6 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-globe"></i></div>
+            <h4>Donor-Funded Project Advisory</h4>
+            <p>
+              Specialized advisory and financial socio-economic surveys for
+              development and externally financed projects globally.
+            </p>
+          </div>
+          <!-- Service 7 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-chalkboard-user"></i>
+            </div>
+            <h4>Training & Capacity Building</h4>
+            <p>
+              Institutional capacity development, professional research,
+              analytics, and allied professional coaching services.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-light">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                
-                <!-- Contact Info -->
-                <div class="reveal">
-                    <span class="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">Get in Touch</span>
-                    <h2 class="font-serif text-3xl md:text-4xl text-primary font-bold mb-8">Ready to discuss your strategy?</h2>
-                    
-                    <div class="space-y-6 mb-10">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0 text-primary">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-1">Headquarters</h4>
-                                <p class="text-gray-600 text-sm leading-relaxed">Baitul Khair, Room No. 602-A<br>48/AB, Purana Paltan<br>Dhaka – 1000</p>
-                            </div>
-                        </div>
+    <!-- ==========================================================================
+         TESTIMONIALS / IMPACT
+         ========================================================================== -->
+    <section class="testimonials section-padding">
+      <div class="container">
+        <h2 class="section-title">Trusted By Leaders</h2>
+        <p class="section-subtitle">
+          We partner with institutions to navigate complex financial landscapes.
+        </p>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0 text-primary">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-1">Email Us</h4>
-                                <p class="text-gray-600 text-sm">contact@coreaxispartners.com</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0 text-primary">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-gray-900 mb-1">Call Us</h4>
-                                <p class="text-gray-600 text-sm">+880 1234 567 890</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="reveal delay-200 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                    <form onsubmit="event.preventDefault();" class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm transition-all duration-300 placeholder-gray-400" placeholder="John Doe">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm transition-all duration-300 placeholder-gray-400" placeholder="john@company.com">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">How can we help?</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm transition-all duration-300 placeholder-gray-400 resize-none" placeholder="Tell us about your consulting needs..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-4 bg-primary text-white font-medium rounded-lg hover:bg-opacity-90 transition-all shadow-sm">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "CoreAxis fundamentally transformed our financial compliance
+              structure. Their GRC advisory is unmatched in depth and practical
+              application."
+            </p>
+            <div class="client-info">
+              <h5>Director of Finance</h5>
+              <span>Multinational NGO</span>
             </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "The level of strategic insight provided during our corporate due
+              diligence phase saved us considerable time and mitigated severe
+              risk."
+            </p>
+            <div class="client-info">
+              <h5>Managing Director</h5>
+              <span>Private Sector Enterprise</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "Their Public Financial Management expertise has been vital for
+              our donor-funded projects, ensuring absolute transparency and
+              efficiency."
+            </p>
+            <div class="client-info">
+              <h5>Project Coordinator</h5>
+              <span>Development Agency</span>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark pt-16 pb-8 border-t-[6px] border-accent">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
-                
-                <div class="max-w-xs">
-                    <div class="flex flex-col mb-4">
-                        <span class="font-serif font-bold text-2xl text-white tracking-tight">CoreAxis</span>
-                        <span class="font-sans text-[0.6rem] tracking-[0.15em] text-gray-400 uppercase mt-1">Advisory Partners</span>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Insight at the Core.<br>Direction on the Axis.
-                    </p>
-                </div>
+    <!-- ==========================================================================
+         CONTACT SECTION
+         ========================================================================== -->
+    <section id="contact" class="section-padding">
+      <div class="container">
+        <h2 class="section-title">Schedule a Consultation</h2>
+        <p class="section-subtitle">
+          Ready to take control of your financial future? Reach out to our
+          advisory team today.
+        </p>
 
-                <div class="flex flex-col md:flex-row gap-12 lg:gap-24">
-                    <div>
-                        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#home" class="text-gray-400 hover:text-accent text-sm transition-colors">Home</a></li>
-                            <li><a href="#about" class="text-gray-400 hover:text-accent text-sm transition-colors">About Firm</a></li>
-                            <li><a href="#services" class="text-gray-400 hover:text-accent text-sm transition-colors">Services</a></li>
-                            <li><a href="#contact" class="text-gray-400 hover:text-accent text-sm transition-colors">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Services</h4>
-                        <ul class="space-y-2">
-                            <li><span class="text-gray-400 text-sm">Valuation</span></li>
-                            <li><span class="text-gray-400 text-sm">Public Financial Mgmt</span></li>
-                            <li><span class="text-gray-400 text-sm">Governance Advisory</span></li>
-                            <li><span class="text-gray-400 text-sm">Business Advisory</span></li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="contact-grid">
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt info-icon"></i>
+              <div>
+                <strong>Head Office</strong><br />
+                House No. 26, Road No. 2, Haji Para,<br />
+                North Badda, Dhaka-1214,<br />
+                Bangladesh
+              </div>
             </div>
-
-            <!-- Divider -->
-            <div class="w-full h-px bg-white/10 mb-8"></div>
-
-            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>&copy; 2024 CoreAxis Advisory Partners. All rights reserved.</p>
-                <div class="mt-2 md:mt-0 space-x-4">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                </div>
+            <div class="info-item">
+              <i class="fas fa-envelope info-icon"></i>
+              <div>
+                <strong>Email Us</strong><br />
+                contact@coreaxispartners.com<br />
+                info@coreaxispartners.com
+              </div>
             </div>
+            <div class="info-item">
+              <i class="fas fa-phone-alt info-icon"></i>
+              <div>
+                <strong>Call Us</strong><br />
+                +880 1XXX-XXXXXX<br />
+                +880 2XXX-XXXXXX
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form">
+            <div id="formMessage" class="form-message"></div>
+
+            <form id="consultationForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="fullName"
+                  class="form-control"
+                  placeholder="Full Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="emailAddress"
+                  class="form-control"
+                  placeholder="Email Address"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  class="form-control"
+                  placeholder="Phone Number"
+                />
+              </div>
+              <div class="form-group">
+                <select id="serviceInterest" class="form-control" required>
+                  <option value="" disabled selected>
+                    Select Area of Interest...
+                  </option>
+                  <option value="PFM">Public Financial Management</option>
+                  <option value="Tax">Financial & Tax Advisory</option>
+                  <option value="GRC">Governance, Risk & Compliance</option>
+                  <option value="Valuation">
+                    Valuation & Asset Management
+                  </option>
+                  <option value="Consulting">Business Consulting</option>
+                  <option value="Other">Other Inquiry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <textarea
+                  id="messageBody"
+                  class="form-control"
+                  placeholder="How can we assist you?"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%">
+                Submit Request
+              </button>
+            </form>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-icon">CA</div>
+              <div class="logo-text">
+                <span class="logo-main">CoreAxis</span>
+                <span class="logo-sub">Advisory Partners</span>
+              </div>
+            </div>
+            <p style="margin-top: 20px">
+              Insight at the Core. Direction on the Axis. Providing independent,
+              ethical, and multidisciplinary professional advisory services
+              worldwide.
+            </p>
+          </div>
+
+          <div class="footer-links-col">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Firm</a></li>
+              <li><a href="#services">Practice Areas</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links-col">
+            <h4 class="footer-title">Legal</h4>
+            <ul class="footer-links">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          &copy; <span id="currentYear"></span> CoreAxis Advisory Partners
+          (CAP). All Rights Reserved.
+        </div>
+      </div>
     </footer>
 
-    <!-- JavaScript for Interactions and Animations -->
+    <!-- ==========================================================================
+         JAVASCRIPT
+         ========================================================================== -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Navbar Scroll Effect
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 20) {
-                    navbar.classList.add('nav-scrolled');
-                } else {
-                    navbar.classList.remove('nav-scrolled');
-                }
-            });
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. Update Copyright Year dynamically to match establishment year/current
+        document.getElementById("currentYear").textContent =
+          new Date().getFullYear();
 
-            // Intersection Observer for Reveal Animations
-            const revealElements = document.querySelectorAll('.reveal');
-            
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
+        // 2. Sticky Navbar & Style Change on Scroll
+        const header = document.getElementById("header");
+        const logoTextElements = document.querySelectorAll(".logo-text span");
+        const navLinks = document.querySelectorAll(".nav-link:not(.btn)");
 
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Stop observing once revealed
-                    }
-                });
-            }, revealOptions);
-
-            revealElements.forEach(el => {
-                revealOnScroll.observe(el);
-            });
-
-            // Trigger animations for elements already in viewport on load
-            setTimeout(() => {
-                revealElements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if(rect.top < window.innerHeight) {
-                        el.classList.add('active');
-                    }
-                });
-            }, 100);
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+            // Change Logo text color for light bg
+            logoTextElements.forEach(
+              (el) => (el.style.color = "var(--primary-navy)"),
+            );
+          } else {
+            header.classList.remove("scrolled");
+            // Revert Logo text color for dark hero bg
+            logoTextElements.forEach((el) => (el.style.color = "var(--white)"));
+          }
         });
+
+        // 3. Mobile Menu Toggle
+        const mobileToggle = document.getElementById("mobileToggle");
+        const navMenu = document.getElementById("navMenu");
+
+        mobileToggle.addEventListener("click", () => {
+          navMenu.classList.toggle("active");
+
+          // Switch icon between bars and times (close)
+          const icon = mobileToggle.querySelector("i");
+          if (navMenu.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+            header.classList.add("scrolled"); // Force light header when menu opens
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+            if (window.scrollY <= 50) {
+              header.classList.remove("scrolled");
+            }
+          }
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            const icon = mobileToggle.querySelector("i");
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          });
+        });
+
+        // 4. Contact Form Validation and Submission Simulation
+        const consultationForm = document.getElementById("consultationForm");
+        const formMessage = document.getElementById("formMessage");
+
+        consultationForm.addEventListener("submit", (e) => {
+          e.preventDefault(); // Prevent page reload
+
+          // Basic validation is handled by HTML5 'required' attributes
+          // Additional regex check for email
+          const emailInput = document.getElementById("emailAddress").value;
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (!emailRegex.test(emailInput)) {
+            formMessage.className = "form-message error";
+            formMessage.textContent = "Please enter a valid email address.";
+            return;
+          }
+
+          // Simulate API call / Form processing
+          const submitBtn = consultationForm.querySelector(
+            'button[type="submit"]',
+          );
+          const originalBtnText = submitBtn.textContent;
+          submitBtn.textContent = "Processing...";
+          submitBtn.disabled = true;
+
+          setTimeout(() => {
+            // Show success message
+            formMessage.className = "form-message success";
+            formMessage.innerHTML =
+              '<i class="fas fa-check-circle"></i> Thank you! Your consultation request has been received. Our team will contact you shortly.';
+
+            // Reset form
+            consultationForm.reset();
+
+            // Reset Button
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+              formMessage.style.display = "none";
+              formMessage.className = "form-message"; // reset classes
+            }, 5000);
+          }, 1500); // simulate 1.5s delay
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
