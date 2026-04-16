@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CoreAxis Advisory Partners | Insight at the Core</title>
+    <link rel="icon" href="icon.png" />
     <meta
       name="description"
       content="CoreAxis Advisory Partners (CAP) is a multidisciplinary professional advisory firm providing financial, tax, and GRC consultancy in Dhaka, Bangladesh."
@@ -171,6 +172,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
       }
 
       /* Stylized Logo to match provided branding */
@@ -211,9 +214,16 @@
         color: var(--accent-teal);
       }
 
+      #logoImg {
+        height: 45px;
+        width: auto;
+        display: block;
+      }
+
       .nav-menu {
         display: flex;
-        gap: 30px;
+        align-items: center;
+        gap: 25px;
       }
 
       .nav-link {
@@ -695,7 +705,8 @@
       <div class="container nav-container">
         <a href="#" class="logo">
           <!-- <div class="logo-icon">CA</div> -->
-          <img src="Final.png" width="15%" alt="CoreAxis Logo" />
+          <!-- <img src="fw.png" width="25%" alt="CoreAxis Logo" /> -->
+          <img id="logoImg" src="fw.png" alt="CoreAxis Logo" />
           <div class="logo-text">
             <!-- <span class="logo-main">CoreAxis</span> -->
             <!-- <span class="logo-sub">Advisory Partners</span> -->
@@ -717,7 +728,7 @@
               style="
                 padding: 10px 20px;
                 border-radius: 4px;
-                margin-left: 10px;
+
                 color: #fff;
               "
               >Book Consultation</a
@@ -982,8 +993,8 @@
               <i class="fas fa-map-marker-alt info-icon"></i>
               <div>
                 <strong>Head Office</strong><br />
-                House No. 26, Road No. 2, Haji Para,<br />
-                North Badda, Dhaka-1214,<br />
+                Baitul Khair, Room No. 602-A, 48/AB, Purana Paltan, Dhaka –
+                1000<br />
                 Bangladesh
               </div>
             </div>
@@ -991,16 +1002,16 @@
               <i class="fas fa-envelope info-icon"></i>
               <div>
                 <strong>Email Us</strong><br />
-                contact@coreaxispartners.com<br />
-                info@coreaxispartners.com
+                contact@coreaxispartners.org<br />
+                info@coreaxispartners.org
               </div>
             </div>
             <div class="info-item">
               <i class="fas fa-phone-alt info-icon"></i>
               <div>
                 <strong>Call Us</strong><br />
-                +880 1XXX-XXXXXX<br />
-                +880 2XXX-XXXXXX
+                +880 1756 773707<br />
+                +880 1735 966765
               </div>
             </div>
           </div>
@@ -1129,18 +1140,27 @@
         const header = document.getElementById("header");
         const logoTextElements = document.querySelectorAll(".logo-text span");
         const navLinks = document.querySelectorAll(".nav-link:not(.btn)");
+        const logoImg = document.getElementById("logoImg");
+        let isColored = false; // track current state
+        logoImg.src = "fw.png";
 
         window.addEventListener("scroll", () => {
           if (window.scrollY > 50) {
             header.classList.add("scrolled");
+
+            logoImg.src = "fb.png";
             // Change Logo text color for light bg
-            logoTextElements.forEach(
-              (el) => (el.style.color = "var(--primary-navy)"),
-            );
+            if (!isColored) {
+              logoImg.src = "fb.png";
+              isColored = true;
+            }
           } else {
             header.classList.remove("scrolled");
-            // Revert Logo text color for dark hero bg
-            logoTextElements.forEach((el) => (el.style.color = "var(--white)"));
+            // only change if not already white
+            if (isColored) {
+              logoImg.src = "fw.png";
+              isColored = false;
+            }
           }
         });
 
